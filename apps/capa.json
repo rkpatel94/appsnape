@@ -1,0 +1,290 @@
+{
+  "name": "capa",
+  "displayName": "CAPA",
+  "baseUrl": "${CAPA_BASE_URL}",
+  "credentials": {
+    "username": "${CAPA_USER}",
+    "password": "${CAPA_PASSWORD}"
+  },
+  "auth": {
+    "strategy": "api",
+    "api": {
+      "endpoint": "/api/authentication/login",
+      "method": "POST",
+      "body": {
+        "username": "{{username}}",
+        "password": "{{password}}",
+        "ipAddress": "127.0.0.1",
+        "latitude": "0",
+        "longitude": "0"
+      },
+      "sessionStorage": {
+        "authToken": "token",
+        "userId": "userMaster.userID",
+        "plantId": "userMaster.plantID",
+        "userData": "userMaster::json"
+      }
+    },
+    "verify": {
+      "path": "/dashboard"
+    }
+  },
+  "browser": {
+    "headless": true,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "capture": {
+    "settleMs": 900
+  },
+  "autoFilter": {
+    "enabled": true,
+    "rangeDays": 365,
+    "preferredUser": "Divy Bhadania"
+  },
+  "discovery": {
+    "enabled": true,
+    "navSelectors": [
+      "aside",
+      "nav",
+      "[role=\"navigation\"]"
+    ],
+    "excludePatterns": [
+      "logout",
+      "signout",
+      "^/$",
+      "forgot-password"
+    ]
+  },
+  "safety": {
+    "readOnly": true,
+    "blockMethods": [
+      "PUT",
+      "PATCH",
+      "DELETE"
+    ],
+    "allowUrlPatterns": [
+      "/api/authentication/login"
+    ]
+  },
+  "routes": [
+    {
+      "module": "Dashboard",
+      "name": "Dashboard",
+      "slug": "Dashboard",
+      "path": "/dashboard"
+    },
+    {
+      "module": "Capa",
+      "name": "CAPA Initiation",
+      "slug": "CAPA_Initiation",
+      "path": "/capa/initiation"
+    },
+    {
+      "module": "Capa",
+      "name": "CAPA Initiation Approval",
+      "slug": "CAPA_Initiation_Approval",
+      "path": "/capa/initiation-approval"
+    },
+    {
+      "module": "Capa",
+      "name": "CAPA Implementation",
+      "slug": "CAPA_Implementation",
+      "path": "/capa/implementation"
+    },
+    {
+      "module": "Capa",
+      "name": "CAPA Implementation Closure",
+      "slug": "CAPA_Implementation_Closure",
+      "path": "/capa/implementation-closure"
+    },
+    {
+      "module": "Capa",
+      "name": "CAPA Effectiveness Implementation",
+      "slug": "CAPA_Effectiveness_Implementation",
+      "path": "/capa/effectiveness"
+    },
+    {
+      "module": "Capa",
+      "name": "CAPA Effectiveness Closure",
+      "slug": "CAPA_Effectiveness_Closure",
+      "path": "/capa/effectiveness-closure"
+    },
+    {
+      "module": "Capa",
+      "name": "CAPA Extension Initiation",
+      "slug": "CAPA_Extension_Initiation",
+      "path": "/capa/extension"
+    },
+    {
+      "module": "Capa",
+      "name": "CAPA Extension Approval",
+      "slug": "CAPA_Extension_Approval",
+      "path": "/capa/extension-approval"
+    },
+    {
+      "module": "Capa",
+      "name": "CAPA Transfer",
+      "slug": "CAPA_Transfer",
+      "path": "/capa/transfer"
+    },
+    {
+      "module": "Capa",
+      "name": "CAPA Transfer Approval",
+      "slug": "CAPA_Transfer_Approval",
+      "path": "/capa/transfer-approval"
+    },
+    {
+      "module": "Reports",
+      "name": "Print Approval",
+      "slug": "Print_Approval",
+      "path": "/reports/print-approval",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Configurations",
+      "name": "Role Master",
+      "slug": "Role_Master",
+      "path": "/configurations/role-master"
+    },
+    {
+      "module": "Configurations",
+      "name": "Module Configuration",
+      "slug": "Module_Configuration",
+      "path": "/configurations/module-configuration"
+    },
+    {
+      "module": "Configurations",
+      "name": "Notification Configuration",
+      "slug": "Notification_Configuration",
+      "path": "/configurations/notification-configuration"
+    },
+    {
+      "module": "Reports",
+      "name": "Audit Trail Report",
+      "slug": "Audit_Trail_Report",
+      "path": "/report-dashboard/audit-trail-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "User Activity Report",
+      "slug": "User_Activity_Report",
+      "path": "/report-dashboard/user-activity-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "CAPA Initiation Report",
+      "slug": "CAPA_Initiation_Report",
+      "path": "/report-dashboard/capa-initiation-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "CAPA Effectiveness Report",
+      "slug": "CAPA_Effectiveness_Report",
+      "path": "/report-dashboard/capa-effectiveness-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "CAPA Effectiveness Overdue Report",
+      "slug": "CAPA_Effectiveness_Overdue_Report",
+      "path": "/report-dashboard/capa-effectiveness-overdue-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "CAPA Overdue Report",
+      "slug": "CAPA_Overdue_Report",
+      "path": "/report-dashboard/overdue-capa-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "CAPA Detail Report",
+      "slug": "CAPA_Detail_Report",
+      "path": "/report-dashboard/capa-detail-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Account",
+      "name": "User Profile",
+      "slug": "User_Profile",
+      "path": "/profile",
+      "recipes": [
+        "tabs"
+      ]
+    },
+    {
+      "module": "Account",
+      "name": "Change Password",
+      "slug": "Change_Password",
+      "path": "/change-password",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "Help Line",
+      "slug": "Help_Line",
+      "path": "/help-line",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "User Manual",
+      "slug": "User_Manual",
+      "path": "/user-manual",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "Release Notes",
+      "slug": "Release_Notes",
+      "path": "/release-notes",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "About System",
+      "slug": "About_System",
+      "path": "/about-system",
+      "recipes": []
+    }
+  ]
+}

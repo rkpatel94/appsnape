@@ -1,0 +1,366 @@
+{
+  "name": "dms-issuance",
+  "displayName": "DMS — Issuance",
+  "baseUrl": "${DMS_ISSUANCE_BASE_URL}",
+  "credentials": {
+    "username": "${DMS_USER}",
+    "password": "${DMS_PASSWORD}"
+  },
+  "auth": {
+    "strategy": "api",
+    "api": {
+      "endpoint": "/api/authentication/login",
+      "method": "POST",
+      "body": {
+        "username": "{{username}}",
+        "password": "{{password}}",
+        "ipAddress": "127.0.0.1",
+        "latitude": "0",
+        "longitude": "0"
+      },
+      "sessionStorage": {
+        "authToken": "token",
+        "userId": "userMaster.userID",
+        "plantId": "userMaster.plantID",
+        "userData": "userMaster::json"
+      }
+    },
+    "verify": {
+      "path": "/dashboard"
+    }
+  },
+  "browser": {
+    "headless": true,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "autoFilter": {
+    "enabled": true,
+    "rangeDays": 365,
+    "preferredUser": "Divy Bhadania"
+  },
+  "outputDir": "output/dms/issuance",
+  "interactions": {
+    "recipes": [
+      "accordions",
+      "toggleSweep",
+      "dropdownSweep",
+      "tabs",
+      "filters",
+      "openAdd",
+      "rowView",
+      "rowEdit",
+      "rowDeactivate"
+    ]
+  },
+  "routes": [
+    {
+      "module": "Dashboard",
+      "name": "Dashboard",
+      "slug": "Dashboard",
+      "path": "/dashboard"
+    },
+    {
+      "module": "Document Library",
+      "name": "Document Library",
+      "slug": "Document_Library",
+      "path": "/document-library",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Issuance Request",
+      "name": "Standard Format Request",
+      "slug": "Standard_Format_Request",
+      "path": "/issuance-request/master-standard-format",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Issuance Request",
+      "name": "BMR/BPR Request",
+      "slug": "BMR_BPR_Request",
+      "path": "/issuance-request/master-bmr-bpr",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Issuance Request",
+      "name": "Protocol Request",
+      "slug": "Protocol_Request",
+      "path": "/issuance-request/master-protocols",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Issuance Request",
+      "name": "Issued Record",
+      "slug": "Issued_Record",
+      "path": "/issuance-request/issued-record",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Issuance Request",
+      "name": "Document Scan",
+      "slug": "Document_Scan",
+      "path": "/issuance-request/document-scan",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Issuance Approval",
+      "name": "Standard Format Approval",
+      "slug": "Standard_Format_Approval",
+      "path": "/issuance-approval/standard-format-issuance",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Issuance Approval",
+      "name": "BMR/BPR Approval",
+      "slug": "BMR_BPR_Approval",
+      "path": "/issuance-approval/bmr-bpr-issuance",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Issuance Approval",
+      "name": "Protocol Approval",
+      "slug": "Protocol_Approval",
+      "path": "/issuance-approval/protocol-issuance",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Issuance Approval",
+      "name": "Re-Print Approval",
+      "slug": "Re_Print_Approval",
+      "path": "/issuance-approval/re-print-approval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Retrieval",
+      "name": "Standard Format Retrieval",
+      "slug": "Standard_Format_Retrieval",
+      "path": "/retrieval/standard-format-retrieval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Retrieval",
+      "name": "BMR/BPR Retrieval",
+      "slug": "BMR_BPR_Retrieval",
+      "path": "/retrieval/bmr-bpr-retrieval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Retrieval",
+      "name": "Protocol Retrieval",
+      "slug": "Protocol_Retrieval",
+      "path": "/retrieval/protocol-retrieval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Transcribe",
+      "name": "Issuance Transcribe",
+      "slug": "Issuance_Transcribe",
+      "path": "/transcribe/issuance-transcribe",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Transcribe",
+      "name": "Transcribe Approval",
+      "slug": "Transcribe_Approval",
+      "path": "/transcribe/transcribe-approval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Transfer",
+      "name": "Issuance Transfer",
+      "slug": "Issuance_Transfer",
+      "path": "/transfer/issuance-transfer",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Transfer",
+      "name": "Issuance Transfer Approval",
+      "slug": "Issuance_Transfer_Approval",
+      "path": "/transfer/issuance-transfer-approval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Transfer",
+      "name": "Acknowledge Transfer",
+      "slug": "Acknowledge_Transfer",
+      "path": "/transfer/acknowledge-transfer",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "Print Approval",
+      "slug": "Print_Approval",
+      "path": "/reports/print-approval"
+    },
+    {
+      "module": "Configurations",
+      "name": "Role Master",
+      "slug": "Role_Master",
+      "path": "/configurations/role-master"
+    },
+    {
+      "module": "Configurations",
+      "name": "Permission Assignment",
+      "slug": "Permission_Assignment",
+      "path": "/configurations/permission-assignment"
+    },
+    {
+      "module": "Configurations",
+      "name": "Module Configuration",
+      "slug": "Module_Configuration",
+      "path": "/configurations/module-configuration"
+    },
+    {
+      "module": "Configurations",
+      "name": "Notification Configuration",
+      "slug": "Notification_Configuration",
+      "path": "/configurations/notification-configuration"
+    }
+  ]
+}

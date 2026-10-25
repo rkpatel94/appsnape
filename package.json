@@ -1,0 +1,33 @@
+{
+  "name": "appshot",
+  "version": "1.0.0",
+  "description": "AppShot \u2014 automated screen capture & page inventory tool for web applications. Point it at any app (URL + credentials), it logs in, walks every screen, captures full-page screenshots of every meaningful state, and emits a PageInventory.md + HTML gallery. Read-only by design.",
+  "main": "src/runner.js",
+  "bin": {
+    "appshot": "bin/appshot.js"
+  },
+  "scripts": {
+    "capture": "node bin/appshot.js capture",
+    "discover": "node bin/appshot.js discover",
+    "init": "node bin/appshot.js init",
+    "ui": "node ui/server.js",
+    "ui:dev": "cd ui/client && npm run dev",
+    "ui:build": "cd ui/client && npm install --no-audit --no-fund && npm run build",
+    "ui:install": "npm --prefix ui/client install",
+    "test": "node test/deactivate-is-read-only.js"
+  },
+  "keywords": [
+    "playwright",
+    "screenshots",
+    "qa",
+    "documentation",
+    "page-inventory"
+  ],
+  "author": "GAMP Lifetech Pvt Ltd",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "playwright": "1.61.1",
+    "express": "^4.21.2"
+  }
+}

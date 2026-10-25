@@ -1,0 +1,317 @@
+{
+  "name": "dms",
+  "displayName": "DMS — Document Control",
+  "baseUrl": "${DMS_BASE_URL}",
+  "credentials": {
+    "username": "${DMS_USER}",
+    "password": "${DMS_PASSWORD}"
+  },
+  "auth": {
+    "strategy": "api",
+    "api": {
+      "endpoint": "/api/authentication/login",
+      "method": "POST",
+      "body": {
+        "username": "{{username}}",
+        "password": "{{password}}",
+        "ipAddress": "127.0.0.1",
+        "latitude": "0",
+        "longitude": "0"
+      },
+      "sessionStorage": {
+        "authToken": "token",
+        "userId": "userMaster.userID",
+        "plantId": "userMaster.plantID",
+        "userData": "userMaster::json"
+      }
+    },
+    "verify": {
+      "path": "/dashboard"
+    }
+  },
+  "browser": {
+    "headless": true,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "autoFilter": {
+    "enabled": true,
+    "rangeDays": 365,
+    "preferredUser": "Divy Bhadania"
+  },
+  "interactions": {
+    "recipes": [
+      "accordions",
+      "toggleSweep",
+      "dropdownSweep",
+      "tabs",
+      "filters",
+      "openAdd",
+      "rowView",
+      "rowEdit",
+      "rowDeactivate"
+    ]
+  },
+  "routes": [
+    {
+      "module": "Dashboard",
+      "name": "Dashboard",
+      "slug": "Dashboard",
+      "path": "/dashboard"
+    },
+    {
+      "module": "Template Registration",
+      "name": "Template Registration",
+      "slug": "Template_Registration",
+      "path": "/template-registration",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Template Approval",
+      "name": "Template Approval",
+      "slug": "Template_Approval",
+      "path": "/template-approval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Management",
+      "name": "Document Request Initiation",
+      "slug": "Document_Request_Initiation",
+      "path": "/document-management/document-request-initiation",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Management",
+      "name": "Document Initiation Approval",
+      "slug": "Document_Initiation_Approval",
+      "path": "/document-management/document-initiation-approval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Management",
+      "name": "Document Preparation",
+      "slug": "Document_Preparation",
+      "path": "/document-management/document-preparation",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Management",
+      "name": "Document Review",
+      "slug": "Document_Review",
+      "path": "/document-management/document-review",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Management",
+      "name": "Document Approval",
+      "slug": "Document_Approval",
+      "path": "/document-management/document-approval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Management",
+      "name": "Transfer",
+      "slug": "Transfer",
+      "path": "/document-management/transfer",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Management",
+      "name": "Transfer Approval",
+      "slug": "Transfer_Approval",
+      "path": "/document-management/transfer-approval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Distribution",
+      "name": "Document Publish",
+      "slug": "Document_Publish",
+      "path": "/document-distribution/document-publish",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Distribution",
+      "name": "Document Library",
+      "slug": "Document_Library",
+      "path": "/document-distribution/document-library",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Distribution",
+      "name": "Document Print / Obsolete Request",
+      "slug": "Document_Print_Obsolete_Request",
+      "path": "/document-distribution/document-print-obsolete-request",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Distribution",
+      "name": "Request Print Approval",
+      "slug": "Request_Print_Approval",
+      "path": "/document-distribution/request-print-approval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Document Distribution",
+      "name": "Request Obsolete Approval",
+      "slug": "Request_Obsolete_Approval",
+      "path": "/document-distribution/request-obsolete-approval",
+      "recipes": [
+        "filters",
+        "tabs",
+        "accordions",
+        "openAdd",
+        "rowView",
+        "rowEdit",
+        "rowDeactivate"
+      ]
+    },
+    {
+      "module": "Report Dashboard",
+      "name": "Report Dashboard",
+      "slug": "Report_Dashboard",
+      "path": "/report-dashboard/audit"
+    },
+    {
+      "module": "Reports",
+      "name": "Print Approval",
+      "slug": "Print_Approval",
+      "path": "/reports/print-approval"
+    },
+    {
+      "module": "Configurations",
+      "name": "Role Master",
+      "slug": "Role_Master",
+      "path": "/configurations/role-master"
+    },
+    {
+      "module": "Configurations",
+      "name": "Permission Assignment",
+      "slug": "Permission_Assignment",
+      "path": "/configurations/permission-assignment"
+    },
+    {
+      "module": "Configurations",
+      "name": "Module Configuration",
+      "slug": "Module_Configuration",
+      "path": "/configurations/module-configuration"
+    },
+    {
+      "module": "Configurations",
+      "name": "Notification Configuration",
+      "slug": "Notification_Configuration",
+      "path": "/configurations/notification-configuration"
+    },
+    {
+      "module": "Configurations",
+      "name": "Document Structure",
+      "slug": "Document_Structure",
+      "path": "/configurations/document-code-prefix"
+    }
+  ]
+}

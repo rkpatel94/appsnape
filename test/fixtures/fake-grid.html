@@ -1,0 +1,78 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Fake grid</title>
+<style>
+  body { font: 14px system-ui; margin: 24px; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #ccc; padding: 8px 10px; text-align: left; }
+  .icon-btn { border: 1px solid #888; background: #fff; padding: 4px 8px; cursor: pointer; }
+  .icon-btn:disabled { opacity: .3; cursor: not-allowed; }
+  #modal { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: none;
+           align-items: center; justify-content: center; z-index: 50; }
+  #modal.on { display: flex; }
+  #panel { position: fixed; top: 20%; left: 25%; width: 520px; background: #fff;
+           padding: 24px; border-radius: 8px; z-index: 60; }
+  #log { margin-top: 20px; font-family: monospace; white-space: pre; }
+</style>
+
+<h1>Role Master</h1>
+<table><thead><tr><th>Role Name</th><th>Actions</th></tr></thead>
+<tbody>
+  <tr><td>QA Manager</td><td>
+    <button class="icon-btn edit">e</button>
+    <button class="icon-btn delete disabled:opacity-30 disabled:cursor-not-allowed" disabled>d</button>
+  </td></tr>
+  <tr><td>Author</td><td>
+    <button class="icon-btn edit">e</button>
+    <button class="icon-btn delete disabled:opacity-30" onclick="openConfirm('Author')">d</button>
+  </td></tr>
+</tbody></table>
+
+<div id="log"></div>
+
+<div id="modal"><div id="panel">
+  <h2>Deactivate Role</h2>
+  <p id="who"></p>
+  <label>Reason for change<br><textarea id="reason" rows="2" cols="50"></textarea></label>
+  <p><b>Electronic Signature</b><br>
+     <input value="Divy Bhadania" readonly><br>
+     <input id="pw" type="password" placeholder="Enter your password"></p>
+  <button onclick="closeConfirm()">Cancel</button>
+  <button onclick="doDelete()">Confirm &amp; Sign</button>
+</div></div>
+
+<script>
+  // The page records what it was asked to do, so the test can prove that
+  // nothing beyond opening the window ever happened.
+  window.__audit = { opened: 0, cancelled: 0, confirmed: 0, posts: 0 };
+  // Reported to the console as well as into the page: the recipe reloads the
+  // screen when it is done, which wipes anything kept in the page itself.
+  const say = (m) => {
+    document.getElementById('log').textContent += m + '\n';
+    console.log('AUDIT ' + m);
+  };
+
+  function openConfirm(name) {
+    window.__audit.opened++;
+    document.getElementById('who').textContent = 'Deactivate the role "' + name + '"?';
+    document.getElementById('modal').classList.add('on');
+    say('confirm opened for ' + name);
+  }
+  function closeConfirm() {
+    window.__audit.cancelled++;
+    document.getElementById('modal').classList.remove('on');
+    say('cancelled');
+  }
+  async function doDelete() {
+    window.__audit.confirmed++;
+    say('CONFIRMED — this must never happen in a capture run');
+    window.__audit.posts++;
+    await fetch('/api/role/deactivate', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ role: 'Author', password: document.getElementById('pw').value }),
+    }).catch((e) => say('post failed: ' + e.message));
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeConfirm();
+  });
+</script>

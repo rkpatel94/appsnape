@@ -1,0 +1,250 @@
+{
+  "name": "dvms",
+  "displayName": "DVMS",
+  "baseUrl": "${DVMS_BASE_URL}",
+  "credentials": {
+    "username": "${DVMS_USER}",
+    "password": "${DVMS_PASSWORD}"
+  },
+  "auth": {
+    "strategy": "api",
+    "api": {
+      "endpoint": "/api/authentication/login",
+      "method": "POST",
+      "body": {
+        "username": "{{username}}",
+        "password": "{{password}}",
+        "ipAddress": "127.0.0.1",
+        "latitude": "0",
+        "longitude": "0"
+      },
+      "sessionStorage": {
+        "authToken": "token",
+        "userId": "userMaster.userID",
+        "plantId": "userMaster.plantID",
+        "userData": "userMaster::json"
+      }
+    },
+    "verify": {
+      "path": "/dashboard"
+    }
+  },
+  "browser": {
+    "headless": true,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "capture": {
+    "settleMs": 900
+  },
+  "autoFilter": {
+    "enabled": true,
+    "rangeDays": 365,
+    "preferredUser": "Divy Bhadania"
+  },
+  "discovery": {
+    "enabled": true,
+    "navSelectors": [
+      "aside",
+      "nav",
+      "[role=\"navigation\"]"
+    ],
+    "excludePatterns": [
+      "logout",
+      "signout",
+      "^/$",
+      "forgot-password"
+    ]
+  },
+  "safety": {
+    "readOnly": true,
+    "blockMethods": [
+      "PUT",
+      "PATCH",
+      "DELETE"
+    ],
+    "allowUrlPatterns": [
+      "/api/authentication/login"
+    ]
+  },
+  "routes": [
+    {
+      "module": "Dashboard",
+      "name": "Dashboard",
+      "slug": "Dashboard",
+      "path": "/dashboard"
+    },
+    {
+      "module": "Master Configuration",
+      "name": "Equipment Master",
+      "slug": "Equipment_Master",
+      "path": "/master-configuration/equipment-master"
+    },
+    {
+      "module": "Master Configuration",
+      "name": "Manufacturing Line Master",
+      "slug": "Manufacturing_Line_Master",
+      "path": "/master-configuration/manufacturing-line-master"
+    },
+    {
+      "module": "Master Configuration",
+      "name": "Product Master",
+      "slug": "Product_Master",
+      "path": "/master-configuration/product-master"
+    },
+    {
+      "module": "Deviation Initiation",
+      "name": "Deviation Initiation",
+      "slug": "Deviation_Initiation",
+      "path": "/deviation-initiation/deviation-initiation"
+    },
+    {
+      "module": "Deviation Initiation",
+      "name": "Deviation Initiation Approval",
+      "slug": "Deviation_Initiation_Approval",
+      "path": "/deviation-initiation/deviation-initiation-approval"
+    },
+    {
+      "module": "Deviation Initiation",
+      "name": "Investigation Approach",
+      "slug": "Investigation_Approach",
+      "path": "/deviation-initiation/investigation-approach"
+    },
+    {
+      "module": "Deviation Initiation",
+      "name": "Investigation Approach Review",
+      "slug": "Investigation_Approach_Review",
+      "path": "/deviation-initiation/investigation-approach-review"
+    },
+    {
+      "module": "Deviation Initiation",
+      "name": "Investigation Approach Approval",
+      "slug": "Investigation_Approach_Approval",
+      "path": "/deviation-initiation/investigation-approach-approval"
+    },
+    {
+      "module": "Deviation Investigation",
+      "name": "Deviation Investigation",
+      "slug": "Deviation_Investigation",
+      "path": "/deviation-investigation/deviation-investigation"
+    },
+    {
+      "module": "Deviation Investigation",
+      "name": "Deviation Investigation Review",
+      "slug": "Deviation_Investigation_Review",
+      "path": "/deviation-investigation/deviation-investigation-review"
+    },
+    {
+      "module": "Deviation Investigation",
+      "name": "Deviation Investigation Approval",
+      "slug": "Deviation_Investigation_Approval",
+      "path": "/deviation-investigation/deviation-investigation-approval"
+    },
+    {
+      "module": "Deviation Interview",
+      "name": "Interview Record",
+      "slug": "Interview_Record",
+      "path": "/deviation-interview/interview-record"
+    },
+    {
+      "module": "Extension",
+      "name": "Deviation Extension",
+      "slug": "Deviation_Extension",
+      "path": "/extension/deviation-extension"
+    },
+    {
+      "module": "Extension",
+      "name": "Deviation Extension Approval",
+      "slug": "Deviation_Extension_Approval",
+      "path": "/extension/deviation-extension-approval"
+    },
+    {
+      "module": "Transfer",
+      "name": "Deviation Transfer",
+      "slug": "Deviation_Transfer",
+      "path": "/transfer/transfer"
+    },
+    {
+      "module": "Transfer",
+      "name": "Deviation Transfer Approval",
+      "slug": "Deviation_Transfer_Approval",
+      "path": "/transfer/transfer-approval"
+    },
+    {
+      "module": "Reports",
+      "name": "Reports Dashboard",
+      "slug": "Reports_Dashboard",
+      "path": "/reports/reports-dashboard"
+    },
+    {
+      "module": "Reports",
+      "name": "Print Approval",
+      "slug": "Print_Approval",
+      "path": "/reports/print-approval"
+    },
+    {
+      "module": "Configurations",
+      "name": "Role Master",
+      "slug": "Role_Master",
+      "path": "/configurations/role-master"
+    },
+    {
+      "module": "Configurations",
+      "name": "Module Configuration",
+      "slug": "Module_Configuration",
+      "path": "/configurations/module-configuration"
+    },
+    {
+      "module": "Configurations",
+      "name": "Notification Configuration",
+      "slug": "Notification_Configuration",
+      "path": "/configurations/notification-configuration"
+    },
+    {
+      "module": "Account",
+      "name": "User Profile",
+      "slug": "User_Profile",
+      "path": "/profile",
+      "recipes": [
+        "tabs"
+      ]
+    },
+    {
+      "module": "Account",
+      "name": "Change Password",
+      "slug": "Change_Password",
+      "path": "/change-password",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "Help Line",
+      "slug": "Help_Line",
+      "path": "/help-line",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "User Manual",
+      "slug": "User_Manual",
+      "path": "/user-manual",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "Release Notes",
+      "slug": "Release_Notes",
+      "path": "/release-notes",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "About System",
+      "slug": "About_System",
+      "path": "/about-system",
+      "recipes": []
+    }
+  ]
+}

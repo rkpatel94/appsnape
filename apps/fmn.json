@@ -1,0 +1,206 @@
+{
+  "name": "fmn",
+  "displayName": "FMN",
+  "baseUrl": "${FMN_BASE_URL}",
+  "credentials": {
+    "username": "${FMN_USER}",
+    "password": "${FMN_PASSWORD}"
+  },
+  "auth": {
+    "strategy": "api",
+    "api": {
+      "endpoint": "/api/authentication/login",
+      "method": "POST",
+      "body": {
+        "username": "{{username}}",
+        "password": "{{password}}",
+        "ipAddress": "127.0.0.1",
+        "latitude": "0",
+        "longitude": "0"
+      },
+      "sessionStorage": {
+        "authToken": "token",
+        "userId": "userMaster.userID",
+        "plantId": "userMaster.plantID",
+        "userData": "userMaster::json"
+      }
+    },
+    "verify": {
+      "path": "/dashboard"
+    }
+  },
+  "browser": {
+    "headless": true,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "capture": {
+    "settleMs": 900
+  },
+  "autoFilter": {
+    "enabled": true,
+    "rangeDays": 365,
+    "preferredUser": "Divy Bhadania"
+  },
+  "discovery": {
+    "enabled": true,
+    "navSelectors": [
+      "aside",
+      "nav",
+      "[role=\"navigation\"]"
+    ],
+    "excludePatterns": [
+      "logout",
+      "signout",
+      "^/$",
+      "forgot-password"
+    ]
+  },
+  "safety": {
+    "readOnly": true,
+    "blockMethods": [
+      "PUT",
+      "PATCH",
+      "DELETE"
+    ],
+    "allowUrlPatterns": [
+      "/api/authentication/login"
+    ]
+  },
+  "routes": [
+    {
+      "module": "Dashboard",
+      "name": "Dashboard",
+      "slug": "Dashboard",
+      "path": "/dashboard"
+    },
+    {
+      "module": "Monitor",
+      "name": "Monitor",
+      "slug": "Monitor",
+      "path": "/monitor",
+      "note": "Live monitoring wall. Trend graphs and device details appear on hover; the icon strip opens the alarm panel and the 3D facility plan.",
+      "recipes": [
+        "hoverSweep",
+        "iconBar"
+      ]
+    },
+    {
+      "module": "Master Setup",
+      "name": "Room Master",
+      "slug": "Room_Master",
+      "path": "/master-setup/room-master"
+    },
+    {
+      "module": "Master Setup",
+      "name": "Device Master",
+      "slug": "Device_Master",
+      "path": "/master-setup/device-master"
+    },
+    {
+      "module": "Master Setup",
+      "name": "Connection Configuration",
+      "slug": "Connection_Configuration",
+      "path": "/master-setup/connection-configuration"
+    },
+    {
+      "module": "Reports",
+      "name": "Reports Dashboard",
+      "slug": "Reports_Dashboard",
+      "path": "/reports/reports-dashboard"
+    },
+    {
+      "module": "Reports",
+      "name": "Print Approval",
+      "slug": "Print_Approval",
+      "path": "/reports/print-approval",
+      "recipes": [
+        "tabs",
+        "printPreview"
+      ],
+      "note": "Approved reports open as the printed document through the print control on each row."
+    },
+    {
+      "module": "Reports",
+      "name": "Data Authorization",
+      "slug": "Data_Authorization",
+      "path": "/reports/data-authorization"
+    },
+    {
+      "module": "Reports",
+      "name": "Data Authorization Approval",
+      "slug": "Data_Authorization_Approval",
+      "path": "/reports/data-authorization-approval"
+    },
+    {
+      "module": "Reports",
+      "name": "Scheduled Reports",
+      "slug": "Scheduled_Reports",
+      "path": "/reports/scheduled-reports"
+    },
+    {
+      "module": "Configurations",
+      "name": "Role Master",
+      "slug": "Role_Master",
+      "path": "/configurations/role-master"
+    },
+    {
+      "module": "Configurations",
+      "name": "Permission Assignment",
+      "slug": "Permission_Assignment",
+      "path": "/configurations/permission-assignment"
+    },
+    {
+      "module": "Configurations",
+      "name": "Module Configuration",
+      "slug": "Module_Configuration",
+      "path": "/configurations/module-configuration"
+    },
+    {
+      "module": "Account",
+      "name": "User Profile",
+      "slug": "User_Profile",
+      "path": "/profile",
+      "recipes": [
+        "tabs"
+      ]
+    },
+    {
+      "module": "Account",
+      "name": "Change Password",
+      "slug": "Change_Password",
+      "path": "/change-password",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "Help Line",
+      "slug": "Help_Line",
+      "path": "/help-line",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "User Manual",
+      "slug": "User_Manual",
+      "path": "/user-manual",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "Release Notes",
+      "slug": "Release_Notes",
+      "path": "/release-notes",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "About System",
+      "slug": "About_System",
+      "path": "/about-system",
+      "recipes": []
+    }
+  ]
+}

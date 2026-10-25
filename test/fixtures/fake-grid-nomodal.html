@@ -1,0 +1,38 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Fake grid, no confirmation</title>
+<style>
+  body { font: 14px system-ui; margin: 24px; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #ccc; padding: 8px 10px; text-align: left; }
+  .icon-btn { border: 1px solid #888; background: #fff; padding: 4px 8px; cursor: pointer; }
+  #log { margin-top: 20px; font-family: monospace; white-space: pre; }
+</style>
+
+<h1>Grid that deletes on the spot</h1>
+<p>The worst case: no confirmation window, the row just goes.</p>
+<table><thead><tr><th>Role Name</th><th>Actions</th></tr></thead>
+<tbody>
+  <tr><td>Author</td><td><button class="icon-btn delete" onclick="wipe(this)">d</button></td></tr>
+</tbody></table>
+<div id="log"></div>
+
+<script>
+  const say = (m) => {
+    document.getElementById('log').textContent += m + '\n';
+    console.log('AUDIT ' + m);
+  };
+  async function wipe(btn) {
+    say('deleting straight away, no confirmation');
+    btn.closest('tr').remove();                 // optimistic UI update
+    try {
+      const r = await fetch('/api/role/delete', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ role: 'Author' }),
+      });
+      say('SERVER WAS REACHED: ' + r.status);
+    } catch (e) {
+      say('write blocked: ' + e.message);
+    }
+  }
+</script>

@@ -1,0 +1,376 @@
+{
+  "name": "ccms",
+  "displayName": "CCMS — Change Control Management System",
+  "baseUrl": "${CCMS_BASE_URL}",
+  "credentials": {
+    "username": "${CCMS_USER}",
+    "password": "${CCMS_PASSWORD}"
+  },
+  "auth": {
+    "strategy": "api",
+    "api": {
+      "endpoint": "/api/authentication/login",
+      "method": "POST",
+      "body": {
+        "username": "{{username}}",
+        "password": "{{password}}",
+        "ipAddress": "127.0.0.1",
+        "latitude": "0",
+        "longitude": "0"
+      },
+      "sessionStorage": {
+        "authToken": "token",
+        "userId": "userMaster.userID",
+        "plantId": "userMaster.plantID",
+        "userData": "userMaster::json"
+      }
+    },
+    "verify": {
+      "path": "/dashboard"
+    }
+  },
+  "browser": {
+    "headless": true,
+    "viewport": {
+      "width": 1440,
+      "height": 900
+    }
+  },
+  "capture": {
+    "settleMs": 900
+  },
+  "discovery": {
+    "enabled": true,
+    "navSelectors": [
+      "aside",
+      "nav",
+      "[role=\"navigation\"]"
+    ],
+    "excludePatterns": [
+      "logout",
+      "signout",
+      "^/$",
+      "forgot-password"
+    ]
+  },
+  "safety": {
+    "readOnly": true,
+    "blockMethods": [
+      "PUT",
+      "PATCH",
+      "DELETE"
+    ],
+    "allowUrlPatterns": [
+      "/api/authentication/login"
+    ]
+  },
+  "routes": [
+    {
+      "module": "Dashboard",
+      "name": "Dashboard",
+      "slug": "Dashboard",
+      "path": "/dashboard",
+      "landingLabel": "Dashboard",
+      "note": "Dashboard with a 1-year date range applied (the app defaults to first-of-month..today, which on the 1st of a month is a single day and renders every chart empty)"
+    },
+    {
+      "module": "Master Setup",
+      "name": "Equipment Master",
+      "slug": "Equipment_Master",
+      "path": "/master-configuration/equipment-master"
+    },
+    {
+      "module": "Master Setup",
+      "name": "Manufacturing Line Master",
+      "slug": "Manufacturing_Line_Master",
+      "path": "/master-configuration/manufacturing-line-master"
+    },
+    {
+      "module": "Master Setup",
+      "name": "Product Master",
+      "slug": "Product_Master",
+      "path": "/master-configuration/product-master"
+    },
+    {
+      "module": "Master Setup",
+      "name": "Material Master",
+      "slug": "Material_Master",
+      "path": "/master-configuration/material-master"
+    },
+    {
+      "module": "Change Initiation",
+      "name": "Change Initiation List",
+      "slug": "Change_Initiation_List",
+      "path": "/change-management/change-initiation"
+    },
+    {
+      "module": "Change Initiation",
+      "name": "Department Assessment",
+      "slug": "Department_Assessment",
+      "path": "/change-management/department-assessment"
+    },
+    {
+      "module": "Change Initiation",
+      "name": "QA Assessment",
+      "slug": "QA_Assessment",
+      "path": "/change-management/qa-assessment"
+    },
+    {
+      "module": "Change Initiation",
+      "name": "Cross Department Assessment",
+      "slug": "Cross_Department_Assessment",
+      "path": "/change-management/cross-department-assessment"
+    },
+    {
+      "module": "Change Initiation",
+      "name": "Regulatory Affairs Assessment",
+      "slug": "Regulatory_Affairs_Assessment",
+      "path": "/change-management/regulatory-affairs-assessment"
+    },
+    {
+      "module": "Change Initiation",
+      "name": "QA Approval",
+      "slug": "QA_Approval",
+      "path": "/change-management/qa-approval"
+    },
+    {
+      "module": "Change Implementation",
+      "name": "Action Item Implementation",
+      "slug": "Action_Item_Implementation",
+      "path": "/change-implementation/action-item-implementation"
+    },
+    {
+      "module": "Change Implementation",
+      "name": "Action Item Closure",
+      "slug": "Action_Item_Closure",
+      "path": "/change-implementation/action-item-closure"
+    },
+    {
+      "module": "Change Implementation",
+      "name": "CC / Action Extension",
+      "slug": "Action_Item_Extension",
+      "path": "/change-implementation/action-item-extension"
+    },
+    {
+      "module": "Change Implementation",
+      "name": "Extension Form (Add)",
+      "slug": "Extension_Form_Add",
+      "path": "/change-implementation/action-item-extension/add",
+      "note": "Progressive disclosure — sections appear after a CC is selected"
+    },
+    {
+      "module": "Change Implementation",
+      "name": "Extension Approval",
+      "slug": "Extension_Approval",
+      "path": "/change-implementation/action-item-extension-approval"
+    },
+    {
+      "module": "Change Implementation",
+      "name": "CC / Action Transfer",
+      "slug": "Action_Item_Transfer",
+      "path": "/change-implementation/action-item-transfer"
+    },
+    {
+      "module": "Change Implementation",
+      "name": "Transfer Form (Add)",
+      "slug": "Transfer_Form_Add",
+      "path": "/change-implementation/action-item-transfer/add"
+    },
+    {
+      "module": "Change Implementation",
+      "name": "Transfer Approval",
+      "slug": "Transfer_Approval",
+      "path": "/change-implementation/action-item-transfer-approval"
+    },
+    {
+      "module": "Change Closure",
+      "name": "Change Closure",
+      "slug": "Change_Closure",
+      "path": "/change-closure"
+    },
+    {
+      "module": "Reports",
+      "name": "Audit Trail Report",
+      "slug": "Audit_Trail_Report",
+      "path": "/report-dashboard/audit-trail-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "Rejected Change Report",
+      "slug": "Rejected_Change_Report",
+      "path": "/report-dashboard/rejected-change-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "Overdue Changes Report",
+      "slug": "Overdue_Changes_Report",
+      "path": "/report-dashboard/overdue-changes-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "Overdue Actions Report",
+      "slug": "Overdue_Actions_Report",
+      "path": "/report-dashboard/overdue-actions-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "Action Items Report",
+      "slug": "Action_Items_Report",
+      "path": "/report-dashboard/Action%20Items%20Report",
+      "note": "NOTE: this report's route value contains spaces in ReportDashboard.jsx (value: 'Action Items Report') while every other report uses a kebab-case slug — inconsistent and URL-fragile.",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "Change Extension Report",
+      "slug": "Change_Extension_Report",
+      "path": "/report-dashboard/change-extension-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "Change Initiation Report",
+      "slug": "Change_Initiation_Report",
+      "path": "/report-dashboard/change-initiation-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ]
+    },
+    {
+      "module": "Reports",
+      "name": "User Activity Report",
+      "slug": "User_Activity_Report",
+      "path": "/report-dashboard/user-activity-report",
+      "recipes": [
+        "accordions",
+        "tabs",
+        "filters"
+      ],
+      "note": "Run for the dss login (Divy Bhadania). The user list shows full names, not usernames."
+    },
+    {
+      "module": "Print Approval",
+      "name": "Print Approval",
+      "slug": "Print_Approval",
+      "path": "/reports/print-approval"
+    },
+    {
+      "module": "Configurations",
+      "name": "Role Master",
+      "slug": "Role_Master",
+      "path": "/configurations/role-master"
+    },
+    {
+      "module": "Configurations",
+      "name": "Permission Assignment",
+      "slug": "Permission_Assignment",
+      "path": "/configurations/permission-assignment",
+      "recipes": [
+        "accordions"
+      ],
+      "note": "The permission sections are empty until a role is chosen, so one is selected first.",
+      "setup": [
+        {
+          "action": "pickOption",
+          "selector": "input[id^=\"react-select\"]",
+          "index": 0
+        },
+        {
+          "action": "wait",
+          "value": 1500
+        }
+      ]
+    },
+    {
+      "module": "Configurations",
+      "name": "Module Configuration",
+      "slug": "Module_Configuration",
+      "path": "/configurations/module-configuration"
+    },
+    {
+      "module": "Configurations",
+      "name": "Notification Configuration",
+      "slug": "Notification_Configuration",
+      "path": "/configurations/notification-configuration"
+    },
+    {
+      "module": "Account",
+      "name": "User Profile",
+      "slug": "User_Profile",
+      "path": "/profile",
+      "recipes": [
+        "tabs"
+      ]
+    },
+    {
+      "module": "Account",
+      "name": "Change Password",
+      "slug": "Change_Password",
+      "path": "/change-password",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "Help Line",
+      "slug": "Help_Line",
+      "path": "/help-line",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "User Manual",
+      "slug": "User_Manual",
+      "path": "/user-manual",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "Release Notes",
+      "slug": "Release_Notes",
+      "path": "/release-notes",
+      "recipes": []
+    },
+    {
+      "module": "Support",
+      "name": "About System",
+      "slug": "About_System",
+      "path": "/about-system",
+      "recipes": []
+    }
+  ],
+  "autoFilter": {
+    "enabled": true,
+    "rangeDays": 365,
+    "preferredUser": "Divy Bhadania"
+  }
+}

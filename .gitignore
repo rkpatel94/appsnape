@@ -1,0 +1,8 @@
+node_modules/
+output/
+.env
+*.log
+logs/
+deploy/run-appshot.cmd
+ui/client/dist/
+.claude/launch.json
